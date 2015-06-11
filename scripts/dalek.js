@@ -19,8 +19,7 @@ module.exports = function (robot) {
       }
 	});
   
-	/* Deactivated for the good by Kinerius.
-  robot.hear(/xD/, function(res)
+  /*robot.hear(/xD/, function(res)
 	{
     if (active)
     {
@@ -28,10 +27,15 @@ module.exports = function (robot) {
     }
 	});*/
 	
-	robot.hear(/soy (nuevo)/i, function (res)
+  robot.hear(/joined #general/, function (msg)
+  {
+    msg.send("Bienvenido "+msg.message.user.name+"!");
+  });
+
+	robot.hear(/soy (nuevo)/i, function (msg)
 	{
-		var name = res.match[1];
-		res.send("Hola #{name}! Te recomiendo que leas este post para saber de donde obtener recursos: http://foro.adva.vg/t/post-introductorio-para-el-desarrollo-de-videojuegos/125");
+		var name = msg.message.user.name;
+		msg.send("Hola #{"+name+"}! Te recomiendo que leas este post para saber de donde obtener recursos: http://foro.adva.vg/t/post-introductorio-para-el-desarrollo-de-videojuegos/125");
 	});
 	
 	robot.respond(/(.*)/i, function(res)
