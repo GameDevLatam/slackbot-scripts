@@ -31,11 +31,22 @@ module.exports = function (robot) {
 		msg.send("Hola @"+name+"! Te recomiendo que leas este post para saber de donde obtener recursos: http://foro.adva.vg/t/post-introductorio-para-el-desarrollo-de-videojuegos/125");
     msg.finish();
 	});
+	robot.respond(/(bye|adios|chau) mitsuku/i, function (res)
+	{
+		useMitsuku = false;
+	});
+	robot.respond(/(hi|hola) mitsuku/i, function (res)
+	{
+		useMitsuku = true;
+	});
 	robot.respond(/(.*)/i, function(res)
   {
+	if (useMitsuku)
+	{
         mit.send(res.match[1]).then(function(response) {
           res.send(response);
           res.finish();
         });
+	}
   });
 };
