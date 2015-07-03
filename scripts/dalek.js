@@ -10,6 +10,8 @@ module.exports = function (robot) {
   var mit = require('mitsuku-api')(); 
   var useMitsuku = false;
   var unknown = ['Eh?','Que?', 'Mmm...', 'BEEP BEEP', 'What?', 'Que decis?', 'Que queres?', 'Que decias?', 'Lo que?','I DON SPIK INGLISH'];
+	
+	/*
 	robot.hear(/gracias/i, function(res)
 	{
     var denada = ['De nada', 'No hay porque', 'No hay de queso nomas de papa', 'Gracias hacen los monos'];
@@ -18,6 +20,7 @@ module.exports = function (robot) {
         res.send(res.random(denada));
       }
 	});
+	*/
 	
   robot.hear(/joined #general/, function (msg)
   {
