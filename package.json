@@ -23,7 +23,8 @@
     "hubot-qr": "*",
     "hubot-calculator": ">= 0.4.0",
     "mitsuku-api": ">= 0.0.1",
-    "hubot-game-idea": "*"
+    "hubot-game-idea": "*",
+    "hubot-shy": "*"
   },
   "engines": {
     "node": "0.10.x"
