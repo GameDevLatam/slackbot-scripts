@@ -14,5 +14,6 @@
   "hubot-qr",
   "hubot-calculator",
   "hubot-game-idea",
-  "hubot-shy"
+  "hubot-shy",
+  "hubot-game-title"
 ]
