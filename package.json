@@ -24,8 +24,7 @@
     "hubot-calculator": ">= 0.4.0",
     "mitsuku-api": ">= 0.0.1",
     "hubot-game-idea": "*",
-    "hubot-shy": "*",
-    "hubot-game-title": "*"
+    "hubot-shy": "*"
   },
   "engines": {
     "node": "0.10.x"
