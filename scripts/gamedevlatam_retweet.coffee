@@ -22,6 +22,8 @@ Twit = require "twit"
 config =
   consumer_key: process.env.HUBOT_TWITTER_CONSUMER_KEY
   consumer_secret: process.env.HUBOT_TWITTER_CONSUMER_SECRET
+#  consumer_key: HUBOT_TWITTER_CONSUMER_KEY
+#  consumer_secret: HUBOT_TWITTER_CONSUMER_SECRET
 
 unless config.consumer_key
   console.log "Please set the HUBOT_TWITTER_CONSUMER_KEY environment variable."
@@ -68,8 +70,10 @@ module.exports = (robot) ->
 
     tweetId = msg.match[1]
     users = robot.brain.users
+    msg.reply "Total users: " + Object.keys(users).length
     for k of (users or {})
       tmpUser = users[k]
+      msg.reply "Now on " + tmpUser.name
       unless tmpUser == msg.message.user
         if tmpUser.retweet_creds
           T = new Twit
@@ -83,6 +87,7 @@ module.exports = (robot) ->
           , (err, reply) ->
 
             if err
-              msg.reply "No pude retweetear con " + user.name
+              msg.reply "No pude retweetear con " + tmpUser.name
     
+    msg.reply "Ma che buona donna..."
     return
