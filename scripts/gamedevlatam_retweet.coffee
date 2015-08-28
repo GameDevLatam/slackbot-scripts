@@ -6,26 +6,27 @@
 #   hubot retweet key: KEY secret: SECRET - Te guarda las keys
 #   hubot retweeteame latam ID - Le dice a todos que te retweeteen
 #
-# Notes:
-#   <optional notes required for the script>
+# Configuration:
+#   HUBOT_TWITTER_CONSUMER_KEY
+#   HUBOT_TWITTER_CONSUMER_SECRET
+#   HUBOT_TWEETER_ACCOUNTS
 #
 # Author:
-#   <github username of the original script author>
-
-# Take consumer key and from script (easier if they don't change)
-HUBOT_TWITTER_CONSUMER_KEY = "XsY4DFSb9ULtHWchD4cojzf8B"
-HUBOT_TWITTER_CONSUMER_SECRET =
-  "FLe4dbOVUfarLnm7XcNH4MRvWb5NplzHoTsMy6kKsMb5ClaCcr"
+#   genkido
 
 # Class for access keys
 class TwitterCredentials
   constructor: (@key, @secret) ->
 
+unless config.consumer_key
+  console.log "Please set the HUBOT_TWITTER_CONSUMER_KEY environment variable."
+unless config.consumer_secret
+  console.log "Please set the HUBOT_TWITTER_CONSUMER_SECRET environment variable."
 
 Twit = require "twit"
 config =
-  consumer_key: HUBOT_TWITTER_CONSUMER_KEY
-  consumer_secret: HUBOT_TWITTER_CONSUMER_SECRET
+  consumer_key: process.env.HUBOT_TWITTER_CONSUMER_KEY
+  consumer_secret: process.env.HUBOT_TWITTER_CONSUMER_SECRET
 
 
 module.exports = (robot) ->
@@ -43,12 +44,12 @@ module.exports = (robot) ->
     T = new Twit
       consumer_key:         config.consumer_key
       consumer_secret:      config.consumer_secret
-      access_token:         tweeterCred.key
-      access_token_secret:  tweeterCred.secret
+      access_token:         twitterCred.key
+      access_token_secret:  twitterCred.secret
 
-    twit.get "search/tweets",
-      q: "banana",
-      (err, reply) ->
+    T.get "search/tweets",
+      q: "banana"
+    , (err, reply) ->
       if err
         msg.reply msg.message.user.name + " Poly no quiere esa galleta"
 
@@ -78,8 +79,8 @@ module.exports = (robot) ->
             access_token_secret:  tmpUser.retweet_creds.secret
 
           T.post "statuses/retweet/:id",
-            id: tweetId,
-            (err, reply) ->
+            id: tweetId
+          , (err, reply) ->
 
             if err
               msg.reply "No pude retweetear con " + user.name
