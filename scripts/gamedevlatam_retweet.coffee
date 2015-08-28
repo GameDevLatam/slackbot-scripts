@@ -71,9 +71,10 @@ module.exports = (robot) ->
     tweetId = msg.match[1]
     users = robot.brain.users()
     msg.reply "Total users: " + Object.keys(users).length
+    msg.reply "Tweet ID: " + tweetId
     for k of (users or {})
       tmpUser = users[k]
-      msg.reply "Now on " + tmpUser.name
+#      msg.reply "Now on " + tmpUser.name
       unless tmpUser == msg.message.user
 #      if 1 == 1
         if tmpUser.retweet_creds
