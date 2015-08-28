@@ -75,6 +75,7 @@ module.exports = (robot) ->
       tmpUser = users[k]
       msg.reply "Now on " + tmpUser.name
       unless tmpUser == msg.message.user
+#      if 1 == 1
         if tmpUser.retweet_creds
           T = new Twit
             consumer_key:         config.consumer_key
@@ -87,7 +88,9 @@ module.exports = (robot) ->
           , (err, reply) ->
 
             if err
-              msg.reply "No pude retweetear con " + tmpUser.name
+              data = JSON.parse(err.data).errors[0]
+              msg.reply "No pude retweetear con " + tmpUser.name + ": #{data.message} (error #{data.code})"
+              return
     
     msg.reply "Ma che buona donna..."
     return
