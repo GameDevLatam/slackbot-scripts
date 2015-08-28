@@ -77,20 +77,23 @@ module.exports = (robot) ->
       unless tmpUser == msg.message.user
 #      if 1 == 1
         if tmpUser.retweet_creds
-          T = new Twit
-            consumer_key:         config.consumer_key
-            consumer_secret:      config.consumer_secret
-            access_token:         tmpUser.retweet_creds.key
-            access_token_secret:  tmpUser.retweet_creds.secret
+          try
+            T = new Twit
+              consumer_key:         config.consumer_key
+              consumer_secret:      config.consumer_secret
+              access_token:         tmpUser.retweet_creds.key
+              access_token_secret:  tmpUser.retweet_creds.secret
 
-          T.post "statuses/retweet/" + tweetId,
-            id: tweetId
-          , (err, reply) ->
+            T.post "statuses/retweet/" + tweetId,
+              id: tweetId
+            , (err, reply) ->
 
-            if err
-              data = JSON.parse(err.data).errors[0]
-              msg.reply "No pude retweetear con " + tmpUser.name + ": #{data.message} (error #{data.code})"
-              return
-    
+              if err
+                data = JSON.parse(err.data).errors[0]
+                msg.reply "No pude retweetear con " + tmpUser.name + ": #{data.message} (error #{data.code})"
+                return
+          catch error
+            msg.reply error
+
     msg.reply "Ma che buona donna..."
     return
