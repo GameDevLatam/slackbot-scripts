@@ -70,24 +70,17 @@ module.exports = (robot) ->
 
     tweetId = msg.match[1]
     users = robot.brain.users()
-    msg.reply "Total users: " + Object.keys(users).length
-    msg.reply "Tweet ID: " + tweetId
     for k of (users or {})
       tmpUser = users[k]
-#      msg.reply "Now on " + tmpUser.name
       unless tmpUser == msg.message.user
-#      if 1 == 1
         if tmpUser.retweet_creds
           try
-            msg.reply "Creating twit object"
-
             T = new Twit
               consumer_key:         config.consumer_key
               consumer_secret:      config.consumer_secret
               access_token:         tmpUser.retweet_creds.key
               access_token_secret:  tmpUser.retweet_creds.secret
 
-            msg.reply "Post retweet " + tweetId
 
             T.post "statuses/retweet/" + tweetId,
               id: tweetId
