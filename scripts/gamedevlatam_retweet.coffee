@@ -18,11 +18,8 @@ HUBOT_TWITTER_CONSUMER_SECRET =
   "FLe4dbOVUfarLnm7XcNH4MRvWb5NplzHoTsMy6kKsMb5ClaCcr"
 
 # Class for access keys
-Class TwitterCredentials
-
-  constructor: (key, secret) ->
-    @key    = key
-    @secret = secret
+class TwitterCredentials
+  constructor: (@key, @secret) ->
 
 
 Twit = require "twit"
@@ -54,12 +51,10 @@ module.exports = (robot) ->
       (err, reply) ->
       if err
         msg.reply msg.message.user.name + " Poly no quiere esa galleta"
-        return
 
       else
         msg.message.user.retweet_creds = twitterCred
         msg.reply msg.message.user.name + " todo joya"
-        return
 
     return
 
@@ -88,6 +83,5 @@ module.exports = (robot) ->
 
             if err
               msg.reply "No pude retweetear con " + user.name
-                          
     
     return
