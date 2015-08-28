@@ -69,7 +69,7 @@ module.exports = (robot) ->
       return
 
     tweetId = msg.match[1]
-    users = robot.brain.users
+    users = robot.brain.users()
     msg.reply "Total users: " + Object.keys(users).length
     for k of (users or {})
       tmpUser = users[k]
