@@ -15,5 +15,6 @@
   "hubot-calculator",
   "hubot-game-idea",
   "hubot-shy",
-  "hubot-game-title"
+  "hubot-game-title",
+  "gamedevlatam_retweet.coffee"
 ]
