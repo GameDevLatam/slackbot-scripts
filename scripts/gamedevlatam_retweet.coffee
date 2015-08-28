@@ -14,20 +14,19 @@
 # Author:
 #   genkido
 
-# Take consumer key and from script (easier if they don't change)
-HUBOT_TWITTER_CONSUMER_KEY = "XsY4DFSb9ULtHWchD4cojzf8B"
-HUBOT_TWITTER_CONSUMER_SECRET =
-  "FLe4dbOVUfarLnm7XcNH4MRvWb5NplzHoTsMy6kKsMb5ClaCcr"
-
 # Class for access keys
 class TwitterCredentials
   constructor: (@key, @secret) ->
 
+unless config.consumer_key
+  console.log "Please set the HUBOT_TWITTER_CONSUMER_KEY environment variable."
+unless config.consumer_secret
+  console.log "Please set the HUBOT_TWITTER_CONSUMER_SECRET environment variable."
 
 Twit = require "twit"
 config =
-  consumer_key: HUBOT_TWITTER_CONSUMER_KEY
-  consumer_secret: HUBOT_TWITTER_CONSUMER_SECRET
+  consumer_key: process.env.HUBOT_TWITTER_CONSUMER_KEY
+  consumer_secret: process.env.HUBOT_TWITTER_CONSUMER_SECRET
 
 
 module.exports = (robot) ->
