@@ -25,7 +25,8 @@
     "mitsuku-api": ">= 0.0.1",
     "hubot-game-idea": "*",
     "hubot-shy": "*",
-    "hubot-game-title": "*"
+    "hubot-game-title": "*",
+    "twit": "1.1.8"
   },
   "engines": {
     "node": "0.10.x"
