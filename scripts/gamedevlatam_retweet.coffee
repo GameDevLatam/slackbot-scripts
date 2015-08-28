@@ -18,15 +18,15 @@
 class TwitterCredentials
   constructor: (@key, @secret) ->
 
-unless config.consumer_key
-  console.log "Please set the HUBOT_TWITTER_CONSUMER_KEY environment variable."
-unless config.consumer_secret
-  console.log "Please set the HUBOT_TWITTER_CONSUMER_SECRET environment variable."
-
 Twit = require "twit"
 config =
   consumer_key: process.env.HUBOT_TWITTER_CONSUMER_KEY
   consumer_secret: process.env.HUBOT_TWITTER_CONSUMER_SECRET
+
+unless config.consumer_key
+  console.log "Please set the HUBOT_TWITTER_CONSUMER_KEY environment variable."
+unless config.consumer_secret
+  console.log "Please set the HUBOT_TWITTER_CONSUMER_SECRET environment variable."
 
 
 module.exports = (robot) ->
