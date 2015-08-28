@@ -78,7 +78,7 @@ module.exports = (robot) ->
             access_token:         tmpUser.retweet_creds.key
             access_token_secret:  tmpUser.retweet_creds.secret
 
-          T.post "statuses/retweet/:id",
+          T.post "statuses/retweet/" + tweetId,
             id: tweetId
           , (err, reply) ->
 
