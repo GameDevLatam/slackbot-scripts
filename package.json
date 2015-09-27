@@ -31,8 +31,10 @@
   "engines": {
     "node": "0.10.x"
   },
-  "scripts": {},
+  "scripts": {
+  "preinstall":"npm install -g coffee-script"
+  },
   "devDependencies": {
-    "coffee": "^1.2.0"
+    "coffee-script": "^1.2.0"
   }
 }
