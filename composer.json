@@ -1,7 +1,7 @@
 {
     "scripts": {
         "post-install-cmd": [
-            "chmod -R 777 node_modules/.bin/hubot"
+            "chmod -R 777 bin/hubot"
         ]
     }
 }
