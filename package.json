@@ -1,6 +1,6 @@
 {
   "name": "Dalek",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "author": "Ezequiel Calderara <ezechico@gmail.com>",
   "description": "El androide feliz",
@@ -30,5 +30,9 @@
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "coffee": "^1.2.0"
   }
 }
