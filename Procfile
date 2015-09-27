@@ -1,1 +1,1 @@
-web: nodemodules/.bin/hubot --adapter slack
+web: node_modules/.bin/hubot --adapter slack
